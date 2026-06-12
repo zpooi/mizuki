@@ -141,21 +141,15 @@ export const navBarConfig: NavBarConfig = {
 			children: [
 				{
 					name: "GitHub",
-					url: "https://github.com/zpooi/mizuki",
+					url: "https://github.com/zpooi",
 					external: true, // 外部链接，新标签页打开
 					icon: "fa7-brands:github",
 				},
 				{
 					name: "Bilibili",
-					url: "https://space.bilibili.com/701864046",
+					url: "https://space.bilibili.com/3632287723817459?spm_id_from=333.1007.0.0",
 					external: true,
 					icon: "fa7-brands:bilibili",
-				},
-				{
-					name: "Gitee",
-					url: "https://gitee.com/zpooi/mizuki",
-					external: true,
-					icon: "mdi:git",
 				},
 			],
 		},
