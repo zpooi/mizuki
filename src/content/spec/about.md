@@ -1,49 +1,34 @@
+# 关于我
 
-This website is built with the **Astro** framework using the [Mizuki](https://github.com/LyraVoid/Mizuki) theme.
+你好，我是 **施光甲**，也使用 **zpooi** 作为网络昵称。
 
-::github{repo="LyraVoid/Mizuki"}
+我目前就读于重庆城市科技学院软件工程专业，是一名正在持续学习和实践的全栈开发工程师。我的主要方向是 Java 后端开发，同时关注前端协作、数据库设计和系统部署。
 
-## 🌟 Theme Features
+## 教育经历
 
-### 🎨 Design & User Experience
-- **Modern & Elegant Design** - Clean, minimalist interface with beautiful typography
-- **Fully Responsive** - Optimized for all devices from mobile to desktop
-- **Dark/Light Mode** - Automatic theme switching with smooth transitions
-- **Beautiful Typography** - Enhanced readability with JetBrains Mono font
-- **Smooth Animations** - Fluid page transitions and interactive elements
+- **重庆城市科技学院｜软件工程本科**：2025 年 9 月至今，人工智能与软件工程学院，GPA 3.7
+- **重庆城市科技学院｜软件技术专科**：2022 年 9 月至 2025 年 6 月，大数据与信息产业学院，GPA 3.5
 
-### 🔍 Content & Search
-- **Advanced Search** - Powered by [Pagefind](https://pagefind.app/) for fast, accurate results
-- **Enhanced Markdown** - Extended syntax with code highlighting and math support
-- **Interactive Table of Contents** - Auto-scroll navigation for long articles
-- **RSS Feed Generation** - Stay updated with automatic feed generation
-- **Reading Time Estimation** - Know how long articles take to read
-- **Post Categorization** - Organize content with tags and categories
+在校期间接触过计算机基础、Java 程序设计、C 语言、数据结构、数据库、Web 前端、软件工程、软件测试、Linux 和移动端开发等课程。
 
+## 工作与项目
 
+2025 年 1 月至 6 月，我在**中国信息通信研究院西部分院**担任后端开发工程师（实习），参与政务数字化展示大屏项目，主要负责：
 
-### 📱 Special Pages
-- **Anime Tracking Page** - Track your anime watching progress with ratings
-- **Friends Links Page** - Showcase friend websites with beautiful cards
-- **Diary/Moments Page** - Share life moments like social media posts
-- **Archive Page** - Organized timeline view of all posts
-- **About Page** - Customizable personal introduction (this page!)
+- 使用 Spring Boot 开发数据接口，完成多源数据清洗、聚合和格式转换；
+- 设计 MySQL 表结构并优化 SQL 查询和索引；
+- 编写 Python 脚本进行数据处理和异常过滤；
+- 参与接口联调、数据安全处理、Docker 部署和 Linux 环境运维。
 
-### 🛠 Technical Features
-- **Enhanced Code Blocks** - Powered by [Expressive Code](https://expressive-code.com/)
-- **Math Support** - LaTeX rendering with KaTeX for mathematical expressions
-- **Image Optimization** - PhotoSwipe gallery with lazy loading
-- **SEO Optimized** - Built-in sitemap and meta tags for better search visibility
-- **Performance Optimized** - Fast loading with caching and optimization
-- **Comment System Ready** - Integration support for Twikoo comments
+## 技术方向
 
-### 🎯 Advanced Markdown Features
-- **Callouts & Admonitions** - Beautiful info boxes with `> [!NOTE]`, `> [!TIP]`, `> [!WARNING]`
-- **Mathematical Equations** - Write LaTeX math with `$inline$` and `$$block$$` syntax
-- **GitHub Cards** - Embed repository cards with `::github{repo="user/repo"}`
-- **Syntax Highlighting** - Advanced code highlighting with line numbers
-- **Copy Code Buttons** - Easy code copying functionality
+- **后端**：Java、Spring Boot、Spring MVC、MyBatis / MyBatis-Plus、Go、Gin
+- **前端**：React、Vue、JavaScript、HTML、CSS
+- **数据库**：MySQL、PostgreSQL，关注表结构、索引与 CRUD 性能
+- **工程化**：Linux、Docker、Tomcat、Nginx、Git、Maven
 
----
+## 关于这个博客
 
-*Built with ❤️ using Astro and inspired by modern web design principles.*
+这里会记录我的技术学习、项目实践和一些不太正式的思考。我希望把解决问题的过程留下来，也希望通过持续写作让自己的表达和工程能力一起变得更好。
+
+你可以通过 [GitHub](https://github.com/zpooi) 查看我的代码，也可以访问我的个人主页：[blog.zpooi.com](https://blog.zpooi.com/)。
