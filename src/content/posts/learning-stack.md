@@ -2,6 +2,7 @@
 title: 我目前的技术栈：从 Java 后端到全栈协作
 published: 2026-09-10
 description: 记录我正在使用和持续学习的语言、框架、数据库与工程工具。
+image: "/assets/desktop-banner/3.jpg"
 tags: [技术栈, Java, 全栈, 学习记录]
 category: 学习记录
 draft: false
@@ -10,6 +11,8 @@ draft: false
 # 我目前的技术栈：从 Java 后端到全栈协作
 
 技术栈不是简历上的关键词集合，而是解决问题时真正能够调用的工具。下面这些内容，是我目前学习和实践中最常用的一部分。
+
+![技术栈学习记录配图 w-100](/assets/desktop-banner/3.jpg "持续学习，持续实践")
 
 ## 后端：Java 是主线
 
@@ -34,4 +37,3 @@ MySQL 和 PostgreSQL 是我目前主要接触的关系型数据库。除了 CRUD
 Linux、Docker、Nginx、Tomcat、Git 和 Maven 是我日常学习与项目实践中经常使用的工具。它们让开发不止停留在本地代码，而是可以进一步走到构建、部署和运行维护。
 
 接下来我会继续补足测试、微服务和系统设计方面的知识，同时把学到的内容尽量沉淀成可复用的项目和文章。
-
