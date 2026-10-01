@@ -99,7 +99,6 @@ const stats = [
 		icon: "material-symbols:calendar-clock-outline",
 		label: i18n(I18nKey.siteStatsRunningDays),
 		value: 0, // 将由客户端更新
-		suffix: i18n(I18nKey.siteStatsDays).replace("{days}", ""),
 		dynamic: true,
 		id: "running-days",
 	},
@@ -153,21 +152,44 @@ const stats = [
 	</div>
 </WidgetLayout>
 
-<script is:inline define:vars={{ siteStartDate, lastPostDate }}>
+<script
+	is:inline
+	define:vars={{
+		siteStartDate,
+		lastPostDate,
+		timeUnits: {
+			day: i18n(I18nKey.day),
+			hour: i18n(I18nKey.hour),
+			minute: i18n(I18nKey.minute),
+			second: i18n(I18nKey.second),
+		},
+	}}
+>
+	function formatRunningTime(milliseconds) {
+		const totalSeconds = Math.max(0, Math.floor(milliseconds / 1000));
+		const days = Math.floor(totalSeconds / 86400);
+		const hours = Math.floor((totalSeconds % 86400) / 3600);
+		const minutes = Math.floor((totalSeconds % 3600) / 60);
+		const seconds = totalSeconds % 60;
+		const pad = (value) => value.toString().padStart(2, "0");
+
+		return `${days}${timeUnits.day} ${pad(hours)}${timeUnits.hour} ${pad(minutes)}${timeUnits.minute} ${pad(seconds)}${timeUnits.second}`;
+	}
+
 	function updateDynamicStats() {
 		const today = new Date();
 
-		// 更新运行天数
-		const startDate = new Date(siteStartDate);
-		const diffTime = Math.abs(today.getTime() - startDate.getTime());
-		const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+		// 使用访问者本地日期的零点，避免 YYYY-MM-DD 被解析为 UTC 导致时区偏差
+		const [year, month, day] = siteStartDate.split("-").map(Number);
+		const startDate = new Date(year, month - 1, day);
+		const diffTime = today.getTime() - startDate.getTime();
 
 		const runningDaysElements = document.querySelectorAll(
 			'[data-stat-id="running-days"]',
 		);
 		if (runningDaysElements.length > 0) {
 			runningDaysElements.forEach((element) => {
-				element.textContent = diffDays.toString();
+				element.textContent = formatRunningTime(diffTime);
 			});
 		}
 
@@ -195,6 +217,9 @@ const stats = [
 	// 页面加载时更新
 	updateDynamicStats();
 
-	// 每小时更新一次（可选，因为天数变化较慢）
-	setInterval(updateDynamicStats, 60 * 60 * 1000);
+	// 每秒更新一次，让运行时间实时读秒
+	if (window.__siteStatsInterval) {
+		clearInterval(window.__siteStatsInterval);
+	}
+	window.__siteStatsInterval = setInterval(updateDynamicStats, 1000);
 </script>

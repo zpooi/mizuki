@@ -88,6 +88,9 @@ declare global {
 
 		// Panel manager
 		panelManager?: unknown;
+
+		// Site statistics timer
+		__siteStatsInterval?: ReturnType<typeof setInterval>;
 	}
 
 	interface Fancybox {
