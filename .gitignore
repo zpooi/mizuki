@@ -39,6 +39,7 @@ yarn.lock
 .idea
 *.iml
 .claude
+.workbuddy/
 
 cache/
 fuwari/
