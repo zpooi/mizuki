@@ -2,7 +2,6 @@
 title: 我目前的技术栈：从 Java 后端到全栈协作
 published: 2026-09-10
 description: 记录我正在使用和持续学习的语言、框架、数据库与工程工具。
-image: "/assets/desktop-banner/3.jpg"
 tags: [技术栈, Java, 全栈, 学习记录]
 category: 学习记录
 draft: false

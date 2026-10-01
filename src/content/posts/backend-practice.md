@@ -2,7 +2,6 @@
 title: 把数据变成可用的系统：我的一次后端项目实践
 published: 2026-09-20
 description: 从多源数据清洗、接口设计到数据库优化和部署，记录我在政务数字化展示项目中的工程思考。
-image: "/assets/desktop-banner/2.jpg"
 tags: [后端, Spring Boot, 数据库, 工程实践]
 category: 后端开发
 draft: false

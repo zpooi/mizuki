@@ -2,7 +2,6 @@
 title: 你好，我是 zpooi
 published: 2026-10-01
 description: 软件工程本科在读，正在把后端开发、全栈实践和日常思考记录在这里。
-image: "/assets/desktop-banner/1.jpg"
 tags: [随笔, 自我介绍, 博客]
 category: 随笔
 pinned: true
