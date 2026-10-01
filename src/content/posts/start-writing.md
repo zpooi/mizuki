@@ -4,6 +4,7 @@ published: 2026-09-01
 description: 写下学习过程中的问题与思考，让每一次实践都留下可以回看的痕迹。
 tags: [随笔, 学习, 博客]
 category: 随笔
+pinned: true
 draft: false
 ---
 
