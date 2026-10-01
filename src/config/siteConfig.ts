@@ -5,10 +5,10 @@ const SITE_LANG = "zh_CN"; // 语言代码，例如：'en', 'zh_CN', 'ja' 等。
 
 export const siteConfig: SiteConfig = {
 	title: "zpooi",
-	subtitle: "施光甲的技术博客",
+	subtitle: "zpooi 的技术博客",
 	siteURL: "https://blog.zpooi.com/", // 请替换为你的站点URL，以斜杠结尾
 	siteStartDate: "2025-01-01", // 站点开始运行日期，用于站点统计组件计算运行天数
-	keywords: ["施光甲", "zpooi", "Java", "Spring Boot", "后端开发", "全栈开发"],
+	keywords: ["zpooi", "Java", "Spring Boot", "后端开发", "全栈开发"],
 
 	lang: SITE_LANG,
 
