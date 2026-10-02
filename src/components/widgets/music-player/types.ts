@@ -5,9 +5,12 @@ export interface Song {
 	cover: string;
 	url: string;
 	duration: number;
+	sourceUrl?: string;
+	licenseUrl?: string;
+	licenseName?: string;
 }
 
-export type PlayerMode = "local" | "meting";
+export type PlayerMode = "local" | "meting" | "jamendo";
 
 export type RepeatMode = 0 | 1 | 2;
 

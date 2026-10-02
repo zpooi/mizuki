@@ -49,6 +49,22 @@ function getAssetPath(path: string): string {
 	<div class="content">
 		<div class="item-title" class:active={isCurrent}>{song.title}</div>
 		<div class="item-artist" class:active={isCurrent}>{song.artist}</div>
+		{#if song.sourceUrl && song.licenseUrl && song.licenseName}
+			<div class="item-attribution">
+				<a
+					href={song.licenseUrl}
+					target="_blank"
+					rel="noopener noreferrer"
+					onclick={(event) => event.stopPropagation()}
+				>{song.licenseName}</a>
+				<a
+					href={song.sourceUrl}
+					target="_blank"
+					rel="noopener noreferrer"
+					onclick={(event) => event.stopPropagation()}
+				>Jamendo / 来源</a>
+			</div>
+		{/if}
 	</div>
 	{#if isCurrent && isPlaying}
 		<Icon
@@ -134,6 +150,18 @@ function getAssetPath(path: string): string {
 		white-space: nowrap;
 		overflow: hidden;
 		text-overflow: ellipsis;
+	}
+
+	.item-attribution {
+		display: flex;
+		gap: 0.5rem;
+		font-size: 0.625rem;
+		line-height: 1rem;
+	}
+
+	.item-attribution a {
+		text-decoration: underline;
+		text-underline-offset: 2px;
 	}
 
 	.item-artist.active,

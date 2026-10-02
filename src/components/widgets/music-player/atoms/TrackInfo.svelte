@@ -50,6 +50,22 @@ function getAssetPath(path: string): string {
 			{song.title}
 		</div>
 		<div class="song-artist text-sm text-50 truncate">{song.artist}</div>
+		{#if song.sourceUrl && song.licenseUrl && song.licenseName}
+			<div class="flex items-center gap-2 text-xs mt-1">
+				<a
+					href={song.licenseUrl}
+					target="_blank"
+					rel="noopener noreferrer"
+					class="underline underline-offset-2"
+				>{song.licenseName}</a>
+				<a
+					href={song.sourceUrl}
+					target="_blank"
+					rel="noopener noreferrer"
+					class="underline underline-offset-2"
+				>Jamendo / 来源</a>
+			</div>
+		{/if}
 		{#if showTime}
 			<div class="text-xs text-30 mt-1">
 				{formatTime(currentTime)} / {formatTime(duration)}

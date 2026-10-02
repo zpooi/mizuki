@@ -84,5 +84,27 @@ function getAssetPath(path: string): string {
 		>
 			{song.artist}
 		</div>
+		{#if song.sourceUrl && song.licenseUrl && song.licenseName}
+			<div class="flex items-center gap-2 text-[10px] leading-tight mt-1">
+				<a
+					href={song.licenseUrl}
+					target="_blank"
+					rel="noopener noreferrer"
+					onclick={(event) => event.stopPropagation()}
+					class="underline underline-offset-2"
+				>
+					{song.licenseName}
+				</a>
+				<a
+					href={song.sourceUrl}
+					target="_blank"
+					rel="noopener noreferrer"
+					onclick={(event) => event.stopPropagation()}
+					class="underline underline-offset-2"
+				>
+					Jamendo / 来源
+				</a>
+			</div>
+		{/if}
 	</div>
 </div>

@@ -261,9 +261,127 @@ class MusicPlayerStore {
 				meting_type,
 				meting_id,
 			);
+		} else if (mode === "jamendo") {
+			await this.fetchJamendoPlaylist();
 		} else {
 			this.loadLocalPlaylist();
 		}
+	}
+
+	private async fetchJamendoPlaylist(): Promise<void> {
+		const clientId = musicPlayerConfig.jamendo_client_id;
+		if (!clientId) {
+			this.showError("Jamendo Client ID is not configured");
+			return;
+		}
+
+		this.state.isLoading = true;
+		this.broadcastState();
+
+		const queries = ["pop", "indie", "folk"];
+		const playlists = await Promise.all(
+			queries.map(async (query) => {
+				try {
+					const params = new URLSearchParams({
+						client_id: clientId,
+						format: "json",
+						limit: "30",
+						tags: query,
+						include: "licenses musicinfo",
+						audioformat: "mp31",
+						order: "popularity_total",
+					});
+					const response = await fetch(
+						`https://api.jamendo.com/v3.0/tracks/?${params.toString()}`,
+					);
+					if (!response.ok) {
+						return [];
+					}
+					const data = (await response.json()) as {
+						headers?: { status?: string };
+						results?: Record<string, unknown>[];
+					};
+					return data.headers?.status === "success" ? (data.results ?? []) : [];
+				} catch {
+					return [];
+				}
+			}),
+		);
+
+		const seen = new Set<string>();
+		const playlist = playlists
+			.flat()
+			.map((track) => this.convertJamendoSong(track))
+			.filter((song): song is Song => song !== null)
+			.filter((song) => {
+				const id = String(song.id);
+				if (seen.has(id)) {
+					return false;
+				}
+				seen.add(id);
+				return true;
+			})
+			.slice(0, 24);
+
+		this.state.isLoading = false;
+		if (playlist.length === 0) {
+			this.showError(i18n(Key.musicPlayerErrorPlaylist));
+			this.broadcastState();
+			return;
+		}
+
+		this.state.playlist = playlist;
+		this.state.currentIndex = 0;
+		this.loadSong(playlist[0], false);
+		this.broadcastState();
+	}
+
+	private convertJamendoSong(track: Record<string, unknown>): Song | null {
+		const getString = (value: unknown) =>
+			typeof value === "string" ? value : "";
+		const licenseUrl = getString(track.license_ccurl).replace(
+			/^http:/,
+			"https:",
+		);
+		const licenseMatch = licenseUrl.match(
+			/creativecommons\.org\/licenses\/(by|by-sa|by-nd)\/([^/]+)/i,
+		);
+		const trackId = Number(track.id);
+		const duration = Number(track.duration);
+		const title = getString(track.name).trim();
+		const artist = getString(track.artist_name).trim();
+		const url = getString(track.audio);
+		const sourceUrl = getString(track.shareurl);
+
+		// Restrict playback to CC licenses that permit commercial sharing too.
+		// Keep the exact source and license visible; no audio is modified.
+		if (
+			!licenseMatch ||
+			!Number.isFinite(trackId) ||
+			!Number.isFinite(duration) ||
+			duration < 90 ||
+			!title ||
+			!artist ||
+			!url ||
+			!sourceUrl
+		) {
+			return null;
+		}
+
+		const licenseName = `CC ${licenseMatch[1].toUpperCase()} ${licenseMatch[2]}`;
+		const cover = getString(track.image);
+
+		return {
+			id: trackId,
+			title,
+			artist,
+			cover: cover || "/favicon/favicon.ico",
+			url,
+			duration,
+			sourceUrl,
+			licenseUrl,
+			licenseName,
+		};
 	}
 
 	private async fetchMetingPlaylist(
