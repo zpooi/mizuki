@@ -1,7 +1,7 @@
 ---
 title: 一个 iOS 社区 App 内测，怎么把反馈变成可修复的问题
 published: 2025-02-20
-description: LINUX DO 官方 App 通过 TestFlight、小范围内测组和问题看板收集反馈；整理有效 Bug 报告要素。
+description: 小范围 iOS 内测通过复现步骤、设备版本和问题看板提高反馈的可处理性。
 tags: [iOS, TestFlight, 产品测试, Bug 反馈]
 category: 工程实践
 draft: false
@@ -9,7 +9,7 @@ draft: false
 
 # 一个 iOS 社区 App 内测，怎么把反馈变成可修复的问题
 
-LINUX DO 官方 iOS App 的内测公告说明，项目先用 TestFlight 小范围发放，再设立专门的内测分组、反馈版块和看板跟踪问题。这样的做法适合功能仍在快速变化、开发团队需要控制反馈范围的阶段。
+小范围 TestFlight 内测适合快速收集问题，又能把反馈控制在可处理的范围内。配套的内测分组、反馈版块和看板能帮助团队把复现步骤、版本和修复状态连起来。
 
 ## 内测反馈写成一张小工单
 
@@ -19,4 +19,4 @@ LINUX DO 官方 iOS App 的内测公告说明，项目先用 TestFlight 小范�
 
 内测资格、系统要求和发放方式会随项目调整，以项目方当前公告为准。参与者也应通过官方 TestFlight 邀请，不要安装来源不明的描述文件或伪造登录页面。
 
-参考：[LINUX DO：社区官方 iOS App 开启内测](https://linux.do/t/2971333)
+资料来源：[社区官方 iOS App 开启内测](https://linux.do/t/2971333)

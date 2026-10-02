@@ -1,7 +1,7 @@
 ---
 title: 排查 “Stream ended without receiving any events”：先定位请求在哪一层断了
 published: 2026-05-12
-description: 从客户端、代理路由、API 网关和 SSE 响应逐层定位流式 API 错误；社区讨论没有确认单一根因。
+description: 流式 API 没有返回事件时，按客户端、代理、网关和 SSE 响应分层排查。
 tags: [API, SSE, Claude Code, 故障排查]
 category: 开发实践
 draft: false
@@ -11,7 +11,7 @@ draft: false
 
 “请求发出去了，但没有收到任何事件”通常说明客户端期待一条流式响应，却在连接结束前没有解析到有效事件。它不能单独证明 MCP、插件、账号余额或网络中的某一项就是根因。
 
-LINUX DO 上的一则 AnyRouter / Claude Code 讨论里，发帖者尝试删掉 MCP 和插件，切换网络节点后错误仍偶发；上游日志显示请求到达，但客户端没有拿到可用的流。回复提出了代理规则等检查方向，最后仍没有确认稳定的单一解法。这类问题适合先缩小范围，而不是继续盲删配置。
+AnyRouter / Claude Code 出现“请求发出但没有收到事件”时，即使上游日志显示请求到达，客户端仍可能没拿到有效流。这个错误没有单一通用根因；我会先区分客户端、代理、网关和 SSE 响应，而不是盲目删除扩展。
 
 ## 从四层开始检查
 
@@ -24,7 +24,6 @@ LINUX DO 上的一则 AnyRouter / Claude Code 讨论里，发帖者尝试删掉 
 
 ## 避免用重试掩盖问题
 
-帖子里有人提到把重试次数拉到很高后“挤进去”，但同时也提醒可能触发账号风控。这不是可靠修复：它会放大请求量，让排查更难，也可能违反服务限制。先用一个小请求验证代理和流式响应，再查服务状态或联系 API 提供方；没有证据证明客户端坏了时，先别重装整套工具。
+把重试次数拉到很高来“挤进去”不是可靠修复：它会放大请求量，让排查更难，也可能触发服务风控。先用一个小请求验证代理和流式响应，再查服务状态或联系 API 提供方；没有证据证明客户端坏了时，先别重装整套工具。
 
-参考：[LINUX DO：AnyRouter 报 `Stream ended without receiving any events` 怎么解决？](https://linux.do/t/2186735)（讨论中没有得到确定的最终根因）
-
+资料来源：[AnyRouter 报 `Stream ended without receiving any events` 怎么解决？](https://linux.do/t/2186735)（讨论中没有得到确定的最终根因）

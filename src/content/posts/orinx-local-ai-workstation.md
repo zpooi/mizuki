@@ -1,7 +1,7 @@
 ---
 title: 把车规域控制器当离线 AI 工作站：先验证硬件边界
 published: 2025-10-24
-description: 整理 OrinX 社区部署包的场景与兼容条件；这是开发板实验，不是车辆功能改装指南。
+description: 将 Orin X 用作本地 AI 工作站前，核对板卡型号、系统运行时和开发环境隔离。
 tags: [边缘计算, Orin, 本地模型, ComfyUI]
 category: 技术观察
 draft: false
@@ -9,14 +9,14 @@ draft: false
 
 # 把车规域控制器当离线 AI 工作站：先验证硬件边界
 
-LINUX DO 的一个开源项目把 Orin X 智驾域控制器改造成离线 AI 工作站，展示了本地运行模型、Embedding 服务和 ComfyUI 的设想。作者提到的板卡包含 32GB 统一内存，并说明部署包针对特定系统运行时做了适配；评论也在追问具体板卡型号和是否具备 SSH。
+把 Orin X 智驾域控制器用作离线 AI 工作站，能把推理放在本地完成，但兼容性首先取决于板卡型号、系统镜像、运行时和 SSH 能力。部署包针对特定硬件做过适配，不能据此推断所有车规板都能直接使用。
 
-![原帖展示的 OrinX 推理管理面板，数据为作者演示环境](/images/posts/linux-do/orinx-dashboard.png)
+![OrinX 推理管理面板示例](/images/posts/linux-do/orinx-dashboard.png)
 
 这类项目最重要的不是“买一块就能跑”，而是逐项确认兼容性：板卡确切型号、启动方式、系统版本、可用存储、散热供电、网络接口，以及是否能安全进入开发环境。不同车型或拆车件即使外观相似，也不保证硬件版本、启动锁或驱动一致。
 
 开始前备份原系统，使用隔离的测试网络，并在离车、非安全关键的环境里运行。不要把实验镜像刷进正在使用的车辆控制器，更不能让未经验证的模型或脚本接管转向、制动等行车功能。
 
-帖子介绍的是一个特定开发者的方案和支持板卡范围；采购或部署前应先看项目 README、确认设备来源，并让作者确认硬件版本。
+这是针对特定板卡和系统版本的开发方案；采购或部署前应先读项目 README、确认设备来源，并核对硬件版本是否受支持。
 
-参考：[LINUX DO：OrinX 智驾域控制器作为离线 AI 工作站](https://linux.do/t/2974933)｜[项目仓库](https://github.com/marswjf/drive-orin-ai-station)
+资料来源：[OrinX 智驾域控制器作为离线 AI 工作站](https://linux.do/t/2974933)｜[项目仓库](https://github.com/marswjf/drive-orin-ai-station)

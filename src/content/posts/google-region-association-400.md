@@ -1,7 +1,7 @@
 ---
 title: Google AI 报 400 地区错误：先查账号关联，再按官方流程申诉
 published: 2025-05-12
-description: 一位用户遇到 INVALID_ARGUMENT 地区错误，另一位反馈通过 Google 官方国家关联表单获批；这不是对所有人的保证。
+description: 遇到 INVALID_ARGUMENT 地区错误时，先核对账号服务区域，再通过官方流程申请真实资料更正。
 tags: [Google AI, HTTP 400, 账号地区, 故障排查]
 category: 开发实践
 draft: false
@@ -9,7 +9,7 @@ draft: false
 
 # Google AI 报 400 地区错误：先查账号关联，再按官方流程申诉
 
-LINUX DO 有用户报告 Google AI / Antigravity 返回 HTTP 400 `INVALID_ARGUMENT`，更换代理节点和重新登录都没解决。另一位用户说，自己的 Google 账号国家关联信息不正确，提交官方 country association 表单后约一天得到处理。
+HTTP 400 `INVALID_ARGUMENT` 是较宽泛的错误，不能只凭状态码断定是地区限制。检查请求参数、客户端版本和账号服务区域后，如果国家关联资料确实有误，再通过 Google 官方表单如实申请更正。
 
 这只是一个案例，不能据此断定所有 400 都是地区关联问题。排查时可以先确认：
 
@@ -20,4 +20,4 @@ LINUX DO 有用户报告 Google AI / Antigravity 返回 HTTP 400 `INVALID_ARGUME
 
 若账号资料确实需要更正，应通过 Google 官方页面如实提交信息，并等待处理结果。不要伪造国家、地址或付款资料，也不要通过反复切换节点绕过地区限制。拿到明确错误响应后，记录时间、客户端版本和脱敏后的错误码，再联系官方支持。
 
-参考：[LINUX DO：Google AI 显示 HTTP 400 地区错误](https://linux.do/t/2975832)（其中一位用户报告官方表单处理成功，不能保证适用于所有账号）
+资料来源：[Google AI 显示 HTTP 400 地区错误](https://linux.do/t/2975832)（其中一位用户报告官方表单处理成功，不能保证适用于所有账号）

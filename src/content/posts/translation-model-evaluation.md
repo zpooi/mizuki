@@ -1,7 +1,7 @@
 ---
 title: 翻译模型不能只看排行榜：用自己的文本做小型评测
 published: 2025-01-19
-description: 从 Index-Translate 讨论整理翻译模型试用方法，重点检查增译、漏译、术语和句子原意。
+description: 用自己的文本样本评估机器翻译的增译、漏译、术语一致性和语气保留。
 tags: [机器翻译, 模型评测, Index-Translate, AI]
 category: 学习记录
 draft: false
@@ -9,11 +9,11 @@ draft: false
 
 # 翻译模型不能只看排行榜：用自己的文本做小型评测
 
-LINUX DO 上有人分享了 B 站 Index-Translate 系列模型。讨论里有用户说评论区的翻译读起来顺，也有人提醒，大模型翻译可能会给原文增加没有出现的修饰语，句子更流畅了，意思却被悄悄改掉。
+翻译模型读起来顺，不代表句意一定准确。我的小测试会特别检查模型有没有增译、漏译、改动否定关系或替换术语；流畅度应该在忠实度之后再比较。
 
-原帖配图展示的是一个模型评测页面中的“指令遵循”维度。它可以说明模型在那类测试上的分数，却不能直接代表翻译准确度，更不能替代自己的文本评测。
+配图展示的是模型评测页面中的“指令遵循”维度。它能说明模型在那类测试上的分数，却不能直接代表翻译准确度，更不能替代自己的文本评测。
 
-![原帖中的模型评分页面示例；该维度是指令遵循，不等同于翻译质量](/images/posts/linux-do/index-translate-demo.png)
+![模型评分页面中的指令遵循维度；该分数不等同于翻译质量](/images/posts/linux-do/index-translate-demo.png)
 
 ## 准备一小组自己的测试句
 
@@ -28,5 +28,4 @@ LINUX DO 上有人分享了 B 站 Index-Translate 系列模型。讨论里有用
 
 对评论和小说来说，语气与上下文也很重要；对技术文档，术语和逻辑关系更重要。先按照自己的任务定义评分，再看公开排行榜，选出的模型才更贴近实际用途。
 
-参考：[LINUX DO：Bilibili 开源 Index-Translate 系列翻译模型](https://linux.do/t/2974061)｜[Index-Translate](https://index-translate.bilibili.com)
-
+资料来源：[Bilibili 开源 Index-Translate 系列翻译模型](https://linux.do/t/2974061)｜[Index-Translate](https://index-translate.bilibili.com)

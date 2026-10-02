@@ -9,9 +9,9 @@ draft: false
 
 # 用手机语音输入，把长文本送到电脑当前光标
 
-如果电脑没有好用的麦克风，或者手机语音识别更顺手，可以让手机负责听写、电脑负责编辑。LINUX DO 上的 remote-input 项目采用简单的局域网模式：电脑启动一个 HTTPS 服务，手机连同一 Wi-Fi 后在浏览器里打开输入页，写好文字再发送，内容会粘贴到电脑当前光标所在的位置。
+如果电脑没有好用的麦克风，或手机语音识别更顺手，可以让手机负责听写、电脑负责编辑。remote-input 采用局域网 HTTPS 页面把文字发送到电脑当前光标位置，减少了跨应用复制粘贴步骤。
 
-![手机语音识别的文字经局域网页面粘贴到桌面编辑器，截图已裁掉原帖中的本地地址](/images/posts/linux-do/remote-input-demo.jpg)
+![手机语音识别的文字经局域网页面粘贴到桌面编辑器，演示图已裁掉本地地址](/images/posts/linux-do/remote-input-demo.jpg)
 
 ## 使用前检查
 
@@ -22,5 +22,4 @@ draft: false
 
 这个思路本身也适用于会议记录草稿、长段文字和无障碍输入：把语音识别和文本编辑拆到最适合的设备上。要用于代码时，记得复查引号、括号、变量名和大小写，语音识别很容易把这些细节听错。
 
-参考：[LINUX DO：remote-input，用手机语音识别给电脑打字](https://linux.do/t/2368341)｜[remote-input 项目](https://github.com/WantenMN/remote-input)
-
+资料来源：[remote-input，用手机语音识别给电脑打字](https://linux.do/t/2368341)｜[remote-input 项目](https://github.com/WantenMN/remote-input)

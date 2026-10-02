@@ -1,7 +1,7 @@
 ---
 title: 用 Google Cloud 额度接入代码 Agent：先理清 Vertex AI 这条链路
 published: 2025-09-25
-description: 讨论中的一种接法是通过 Vertex AI 调用模型；整理项目、区域、认证与预算控制的准备步骤。
+description: 使用 Vertex AI 和代码 Agent 前，确认项目、区域、客户端支持、凭证权限和预算。
 tags: [Google Cloud, Vertex AI, Claude Code, 凭证安全]
 category: 开发实践
 draft: false
@@ -9,7 +9,7 @@ draft: false
 
 # 用 Google Cloud 额度接入代码 Agent：先理清 Vertex AI 这条链路
 
-LINUX DO 上有人问，新账号获得的 Google Cloud 额度能不能用于代码 Agent。回复里提到的核心不是把“赠金”塞进任意客户端，而是确认服务是否能调用 Vertex AI：有些客户端原生支持 Vertex，有些需要一个本地兼容网关把请求协议转换后再转发。
+Google Cloud 额度能否用于代码 Agent，取决于目标模型和 Vertex AI 是否符合该额度规则，以及客户端是否支持相应接口。有些工具可以原生调用 Vertex；其他工具则需要本地兼容网关转换请求协议。
 
 ## 开始前先确认四件事
 
@@ -33,5 +33,4 @@ export GOOGLE_APPLICATION_CREDENTIALS="/local/secure/path/vertex-credentials.jso
 
 服务账号 JSON 私钥一旦上传到仓库、贴进论坛或交给不可信网关，就可能被用于消耗项目额度。不要把凭证写进 `.env.example`、截图或日志；本地配置文件应加入忽略规则。为项目设置预算提醒和配额，测试完成后撤销不再使用的密钥。
 
-参考：[LINUX DO：Google 新账号赠金怎么在 Code Agent 上调用？](https://linux.do/t/2973817)（讨论提到了 Vertex AI 原生接入与本地协议网关两种路线；具体支持情况请核对官方文档）
-
+资料来源：[Google 新账号赠金怎么在 Code Agent 上调用？](https://linux.do/t/2973817)（讨论提到了 Vertex AI 原生接入与本地协议网关两种路线；具体支持情况请核对官方文档）

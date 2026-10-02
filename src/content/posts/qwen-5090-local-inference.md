@@ -1,7 +1,7 @@
 ---
 title: 单卡跑 27B 模型，权重能装下只是第一步
 published: 2026-09-29
-description: 从 RTX 5090 社区实测整理显存、量化、KV Cache、harness 与任务质量之间的关系。
+description: 单卡运行 27B 模型时，量化、KV Cache、上下文和推理框架都会影响速度与质量。
 tags: [本地模型, Qwen, RTX 5090, 量化]
 category: 技术观察
 draft: false
@@ -9,9 +9,9 @@ draft: false
 
 # 单卡跑 27B 模型，权重能装下只是第一步
 
-LINUX DO 有用户分享了在 RTX 5090 上运行 Qwen 27B 量化模型的尝试，并比较了不同 harness 和直接使用 llama.cpp 的结果。原帖作者特别指出，实际体验不仅由模型权重决定，还和上下文设置、KV Cache 量化、推理框架及启用的 speculative / MTP 功能有关。
+在 RTX 5090 上运行 Qwen 27B 量化模型时，权重之外还要考虑上下文长度、KV Cache 量化、推理框架和 MTP 等设置。不同 harness 会改变工具调用和输出体验，速度数字不能脱离配置单独比较。
 
-![原帖中的本地模型生成效果示例](/images/posts/linux-do/qwen-5090-demo.jpeg)
+![本地量化模型生成内容的示例](/images/posts/linux-do/qwen-5090-demo.jpeg)
 
 做自己的配置时，可以按顺序调整：
 
@@ -22,4 +22,4 @@ LINUX DO 有用户分享了在 RTX 5090 上运行 Qwen 27B 量化模型的尝试
 
 更可靠的结果应包含模型文件版本、量化格式、推理框架、上下文长度、并发、首字延迟和输出速度。社区数字适合提供起点，复现时还要考虑显存型号和软件版本差异。
 
-参考：[LINUX DO：Qwen 27B 在 RTX 5090 上的本地推理体验](https://linux.do/t/2771932)（原帖的指标为作者自测）
+资料来源：[Qwen 27B 在 RTX 5090 上的本地推理体验](https://linux.do/t/2771932)（原帖的指标为作者自测）

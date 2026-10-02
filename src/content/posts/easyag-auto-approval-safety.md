@@ -1,7 +1,7 @@
 ---
 title: Agent 自动批准模式别裸跑：把危险命令拦截当作辅助层
 published: 2026-01-10
-description: EasyAG 社区更新提到 Turbo Mode 与危险命令规则；整理编码 Agent 自动授权的安全使用方法。
+description: 评估编码 Agent 自动批准命令时的权限边界、危险规则和回滚措施。
 tags: [AI Agent, 自动批准, 命令行, 安全]
 category: 开发实践
 draft: false
@@ -21,6 +21,6 @@ EasyAG 的更新帖介绍了官方 Turbo Mode 与危险命令规则，作者明�
 
 禁止列表也有局限：危险操作可能换一种命令写法，正常操作也可能误命中。安全评估应检查命令上下文和文件系统权限，不能只依赖字符串匹配或项目宣称的规则库。
 
-帖子里提到的自动审批行为属于作者对特定版本的描述；使用前应核对项目源码与官方文档，不要仅凭宣传文字给主力账号或生产目录授予全自动权限。
+自动审批行为会随工具版本变化；使用前应核对当前源码与官方文档，不要仅凭功能说明就给主力账号或生产目录授予全自动权限。
 
-参考：[LINUX DO：EasyAG Antigravity 增强启动器更新](https://linux.do/t/2918980)｜[EasyAntigravity 项目](https://github.com/DSDS-CMHL/EasyAntigravity)
+资料来源：[EasyAG Antigravity 增强启动器更新](https://linux.do/t/2918980)｜[EasyAntigravity 项目](https://github.com/DSDS-CMHL/EasyAntigravity)

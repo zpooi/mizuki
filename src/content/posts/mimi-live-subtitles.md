@@ -9,11 +9,11 @@ draft: false
 
 # 给系统声音加实时字幕：Mimi 的使用场景和隐私检查
 
-看外语视频、直播、网课或游戏时，如果播放器没有合适字幕，可以在系统音频外面加一层实时识别与翻译。LINUX DO 上的 Mimi 项目介绍了悬浮字幕窗口，支持调整位置和大小；作者说明目前依赖用户自行配置的云服务 API，识别和翻译效果取决于所选服务。
+看外语视频、直播、网课或游戏时，如果播放器没有合适字幕，可以在系统音频外面加一层实时识别与翻译。Mimi 这类桌面工具提供可调整位置和大小的悬浮字幕；识别和翻译效果取决于云服务，也要确认音频如何处理。
 
 ![Mimi 演示系统音频转为悬浮翻译字幕，画面使用 Sintel 演示片段](/images/posts/linux-do/mimi-live-subtitles.jpeg)
 
-截图中的演示片段来自 Blender Foundation 的《Sintel》，原帖标注为 CC BY 3.0。
+演示画面使用 Blender Foundation 的《Sintel》，该片段以 CC BY 3.0 发布。
 
 ## 适合先试的流程
 
@@ -24,6 +24,6 @@ draft: false
 
 字幕窗口通常会覆盖画面，使用时可调低背景透明度并避开重要内容。课程和会议涉及未公开信息时，先确认服务商的数据处理方式和组织规定；不清楚时不要把音频交给外部 API。
 
-帖子介绍其支持 macOS Apple Silicon 和 Windows x64，且需要自备云端 API 凭证；平台支持与费用可能变化，安装前请以项目说明为准。
+当前项目文档列出 macOS Apple Silicon 和 Windows x64 支持，并要求自备云端 API 凭证；平台支持与费用可能变化，安装前请核对最新文档。
 
-参考：[LINUX DO：Mimi 实时字幕工具](https://linux.do/t/2948410)｜[Mimi 项目](https://github.com/yuxino/mimi)
+资料来源：[Mimi 实时字幕工具](https://linux.do/t/2948410)｜[Mimi 项目](https://github.com/yuxino/mimi)

@@ -11,7 +11,7 @@ draft: false
 
 LiveAgent 的社区介绍展示了桌面客户端与 Gateway / WebUI：Agent 可以访问终端、文件树、SSH、浏览器和后台任务。这让工作流更连贯，也意味着 Agent 获得的权限可能超出普通聊天窗口。
 
-![LiveAgent 桌面端界面示例，来自项目原帖](/images/posts/linux-do/liveagent-ui.jpeg)
+![LiveAgent 桌面端界面示例](/images/posts/linux-do/liveagent-ui.jpeg)
 
 ## 按任务开放权限
 
@@ -23,4 +23,4 @@ LiveAgent 的社区介绍展示了桌面客户端与 Gateway / WebUI：Agent 可
 
 “能执行”不等于“应该自动执行”。评估这类客户端时，可以先测它如何展示工具调用、如何中断长任务、后台进程怎么回收，以及断线后是否保留执行状态，再决定放进日常或生产流程。
 
-参考：[LINUX DO：LiveAgent，一个支持 WebUI 的 AI Agent 客户端](https://linux.do/t/2587954)｜[LiveAgent 项目](https://github.com/Stack-Cairn/LiveAgent)
+资料来源：[LiveAgent，一个支持 WebUI 的 AI Agent 客户端](https://linux.do/t/2587954)｜[LiveAgent 项目](https://github.com/Stack-Cairn/LiveAgent)

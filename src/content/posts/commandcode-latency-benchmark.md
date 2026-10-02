@@ -1,7 +1,7 @@
 ---
 title: AI 编程服务突然变慢，先分清首 token、生成速度和缓存
 published: 2025-06-13
-description: Command Code 用户观察到不同模式的首字延迟、token/s 和缓存命中差异；给出复现比较的记录方法。
+description: 区分不同模式的首 token 延迟、生成速度与缓存命中，使用固定任务做可复现比较。
 tags: [模型性能, 延迟, Coding Agent, 基准测试]
 category: 开发实践
 draft: false
@@ -9,7 +9,7 @@ draft: false
 
 # AI 编程服务突然变慢，先分清首 token、生成速度和缓存
 
-LINUX DO 上有用户比较了 Command Code 中 DeepSeek Flash 的不同模式：首 token 时间、生成速度和缓存命中率表现各异。评论没有确认这是官方路由变化、负载、缓存策略还是第三方服务实现造成的，所以不应把一次截图当成根因证明。
+服务变慢时，我会把首 token 时间、生成速度、缓存命中率和请求路由分开记录。单次截图看不出问题来自服务负载、缓存策略还是客户端设置，先复现差异再判断更可靠。
 
 复测时把指标拆开：
 
@@ -20,4 +20,4 @@ LINUX DO 上有用户比较了 Command Code 中 DeepSeek Flash 的不同模式�
 
 选一组固定任务，在相近时间、同一模型标识和同一客户端版本下各跑几次，使用中位数而非单次峰值。测试提示词尽量不含私密代码；如果服务商没有公开模型路由和用量统计，就把结果写成“观测到的表现”，不要推断模型被替换或降级。
 
-参考：[LINUX DO：Command Code 的 DeepSeek Flash 变慢原因讨论](https://linux.do/t/2964869)（原帖列出了多项观察，但原因未确认）
+资料来源：[Command Code 的 DeepSeek Flash 变慢原因讨论](https://linux.do/t/2964869)（原帖列出了多项观察，但原因未确认）

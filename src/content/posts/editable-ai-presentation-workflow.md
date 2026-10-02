@@ -9,9 +9,9 @@ draft: false
 
 # AI 生成的 PPT 如何保留可编辑性：先定视觉稿，再重建文字层
 
-许多生成式工具能做出漂亮的整页图片，但交付后改一个标题或数字也得重新生成。LINUX DO 上的 `ppt-craft-editable` 作者介绍了一种两阶段思路：先把图片式 PPT 当作视觉参考，再重建背景与可编辑文字对象，让最终页既接近设计稿，又能继续修改。
+整页图片式 PPT 视觉完成度高，但改一个标题或数字都可能需要重生成。我更倾向于把视觉稿当作版式参考，再拆出背景与可编辑文字对象，让成品既保留风格，也便于后续改稿。
 
-![原帖中 AI 生成的课件视觉稿示例](/images/posts/linux-do/editable-ppt-demo.jpeg)
+![AI 生成的课件视觉稿示例](/images/posts/linux-do/editable-ppt-demo.jpeg)
 
 ## 两阶段制作
 
@@ -20,6 +20,6 @@ draft: false
 3. **重新创建可编辑文字**：按照视觉稿放置文本框、字体、颜色和段落，检查遮挡、换行与对齐。
 4. **导出后逐页验收**：在目标 Office 软件里打开，检查字体替换、图表位置、文本是否可选中，以及演示比例变化后是否溢出。
 
-文字和背景拆开后，后续改稿不必重做整页；代价是需要检查 AI 识别出来的文案与布局，复杂图表仍可能要人工重画。帖子作者也提示，模型的还原能力会影响最终视觉相似度。
+文字和背景拆开后，后续改稿不必重做整页；代价是需要检查识别文案与布局，复杂图表仍可能要人工重画。最终视觉相似度也取决于模型的版式还原能力。
 
-参考：[LINUX DO：ppt-craft-editable，可编辑 PPT 生成方式](https://linux.do/t/2510134)｜[项目仓库](https://github.com/ilioner/ppt-craft-editable)
+资料来源：[ppt-craft-editable，可编辑 PPT 生成方式](https://linux.do/t/2510134)｜[项目仓库](https://github.com/ilioner/ppt-craft-editable)

@@ -1,7 +1,7 @@
 ---
 title: 一个提示词能识别模型吗？从 Gemini 4 传闻讨论看验证边界
 published: 2026-05-17
-description: LINUX DO 有人用特定词串测试疑似 Gemini 4 的灰度模型，但不同账号输出并不一致；整理如何区分线索与证据。
+description: 用重复测试、已知模型对照和可复现评分区分型号传闻与实证结果。
 tags: [AI, Gemini, 信息核验, 模型评测]
 category: 随笔
 draft: false
@@ -9,9 +9,9 @@ draft: false
 
 # 一个提示词能识别模型吗？从 Gemini 4 传闻讨论看验证边界
 
-LINUX DO 最近出现一则 Gemini 4 Pro 疑似内测的讨论。发帖者引用了网络截图，并尝试用 `StarSrvGroupBody` 和 `intFragmentation` 这两个词测试模型。回复里的结果并不一致：有人得到解释，有人只收到一个数字，也有人认为响应本身不足以说明模型身份。
+用 `StarSrvGroupBody` 和 `intFragmentation` 这类词串测试模型身份，结果并不稳定：不同账号可能得到解释、数字或拒答。我的判断是，这种输出只能算行为线索，无法单独证明后台模型版本。
 
-![帖子中的模型回答截图。它是一次用户测试记录，不是版本证明。](/images/posts/linux-do/gemini-rumor-test.jpg)
+![模型回答示例；单次输出不能证明模型版本](/images/posts/linux-do/gemini-rumor-test.jpg)
 
 ## 为什么这类提示词不能当作身份证
 
@@ -29,5 +29,4 @@ LINUX DO 最近出现一则 Gemini 4 Pro 疑似内测的讨论。发帖者引用
 
 这次讨论更适合作为观察灰度传闻如何传播的案例。没有官方确认或可重复的对照实验之前，把它称为“未证实线索”更准确。
 
-参考：[LINUX DO：基米极地大冲击！Gemini 4 Pro 疑似内测！](https://linux.do/t/2975228)（讨论中包含不同账号的测试结果与质疑）
-
+资料来源：[基米极地大冲击！Gemini 4 Pro 疑似内测！](https://linux.do/t/2975228)（讨论中包含不同账号的测试结果与质疑）
