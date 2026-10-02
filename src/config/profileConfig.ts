@@ -23,7 +23,7 @@ export const profileConfig: ProfileConfig = {
 		{
 			name: "Email",
 			icon: "material-symbols:mail",
-			url: "mailto:doukayun@gmail.com",
+			url: "mailto:douka@vip.qq.com",
 		},
 	],
 };
