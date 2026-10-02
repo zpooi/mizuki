@@ -6,6 +6,11 @@ import { i18n } from "../../../i18n/translation";
 import { url } from "../../../utils/url-utils";
 import Image from "../../atoms/Image/Image.astro";
 import TypewriterText from "../../atoms/typewriter-text/TypewriterText.astro";
+
+const emailAddress =
+	profileConfig.links
+		.find((item) => item.url.startsWith("mailto:"))
+		?.url.slice("mailto:".length) ?? "";
 ---
 
 <div class="card-base p-3">
@@ -60,17 +65,28 @@ import TypewriterText from "../../atoms/typewriter-text/TypewriterText.astro";
 		<div class="flex flex-wrap gap-2 justify-center mb-1">
 			{
 				profileConfig.links.length > 1 &&
-					profileConfig.links.map((item) => (
-						<a
-							rel="me"
-							aria-label={item.name}
-							href={item.url}
-							target="_blank"
-							class="btn-regular rounded-lg h-10 w-10 active:scale-90"
-						>
-							<Icon name={item.icon} class="text-[1.5rem]" />
-						</a>
-					))
+					profileConfig.links.map((item) =>
+						item.url.startsWith("mailto:") ? (
+							<button
+								type="button"
+								aria-label={item.name}
+								data-profile-email-trigger
+								class="btn-regular rounded-lg h-10 w-10 active:scale-90"
+							>
+								<Icon name={item.icon} class="text-[1.5rem]" />
+							</button>
+						) : (
+							<a
+								rel="me"
+								aria-label={item.name}
+								href={item.url}
+								target="_blank"
+								class="btn-regular rounded-lg h-10 w-10 active:scale-90"
+							>
+								<Icon name={item.icon} class="text-[1.5rem]" />
+							</a>
+						),
+					)
 			}
 			{
 				profileConfig.links.length == 1 && (
@@ -108,7 +124,51 @@ import TypewriterText from "../../atoms/typewriter-text/TypewriterText.astro";
 			</div>
 		</div>
 	</div>
+	{
+		emailAddress && (
+			<dialog
+				data-profile-email-dialog
+				aria-labelledby="profile-email-title"
+				class="w-[min(24rem,calc(100vw-2rem))] rounded-2xl border-0 bg-transparent p-0 text-inherit backdrop:bg-black/50"
+			>
+				<div class="card-base rounded-2xl p-5 shadow-2xl">
+					<div class="mb-4 flex items-center justify-between gap-4">
+						<h2 id="profile-email-title" class="text-lg font-bold">
+							联系邮箱
+						</h2>
+						<button
+							type="button"
+							data-profile-email-close
+							class="btn-regular rounded-lg px-3 py-1.5 text-sm"
+						>
+							关闭
+						</button>
+					</div>
+					<p class="select-all break-all text-base text-[var(--primary)]">
+						{emailAddress}
+					</p>
+				</div>
+			</dialog>
+		)
+	}
 </div>
+
+<script>
+	document
+		.querySelectorAll<HTMLDialogElement>("[data-profile-email-dialog]")
+		.forEach((dialog) => {
+			const profileCard = dialog.parentElement;
+			profileCard
+				?.querySelector<HTMLButtonElement>("[data-profile-email-trigger]")
+				?.addEventListener("click", () => dialog.showModal());
+			dialog
+				.querySelector<HTMLButtonElement>("[data-profile-email-close]")
+				?.addEventListener("click", () => dialog.close());
+			dialog.addEventListener("click", (event) => {
+				if (event.target === dialog) dialog.close();
+			});
+		});
+</script>
 
 <script
 	is:inline
