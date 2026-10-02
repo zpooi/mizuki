@@ -1,6 +1,6 @@
 ---
 title: API 网关的故障转移，为什么有时不该自动切换
-published: 2026-10-01
+published: 2025-09-19
 description: 从 Octopus 的一次重构讨论看实时日志、请求挂起、手动切换和上下文缓存之间的取舍。
 tags: [API 网关, 故障转移, Agent, 系统设计]
 category: 开发实践

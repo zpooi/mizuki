@@ -1,6 +1,6 @@
 ---
 title: 把重复生图任务整理成 CSV：一个批处理工作流
-published: 2026-10-01
+published: 2025-06-07
 description: 根据 LINUX DO 上的 AIHelper 功能讨论，整理用 CSV 管理提示词、文件名和平台并批量执行的步骤。
 tags: [AI, 生图, CSV, 自动化]
 category: 工具分享

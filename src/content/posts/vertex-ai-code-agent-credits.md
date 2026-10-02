@@ -1,6 +1,6 @@
 ---
 title: 用 Google Cloud 额度接入代码 Agent：先理清 Vertex AI 这条链路
-published: 2026-10-01
+published: 2025-09-25
 description: 讨论中的一种接法是通过 Vertex AI 调用模型；整理项目、区域、认证与预算控制的准备步骤。
 tags: [Google Cloud, Vertex AI, Claude Code, 凭证安全]
 category: 开发实践

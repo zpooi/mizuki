@@ -1,6 +1,6 @@
 ---
 title: 用手机语音输入，把长文本送到电脑当前光标
-published: 2026-10-01
+published: 2026-05-30
 description: remote-input 用局域网 HTTPS 页面把手机输入粘贴到电脑；整理适合场景、连接方式和安全边界。
 tags: [语音输入, 局域网, Rust, 开源工具]
 category: 工具分享

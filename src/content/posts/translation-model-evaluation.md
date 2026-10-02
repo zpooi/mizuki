@@ -1,6 +1,6 @@
 ---
 title: 翻译模型不能只看排行榜：用自己的文本做小型评测
-published: 2026-10-01
+published: 2025-01-19
 description: 从 Index-Translate 讨论整理翻译模型试用方法，重点检查增译、漏译、术语和句子原意。
 tags: [机器翻译, 模型评测, Index-Translate, AI]
 category: 学习记录

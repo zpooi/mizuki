@@ -1,6 +1,6 @@
 ---
 title: 一个提示词能识别模型吗？从 Gemini 4 传闻讨论看验证边界
-published: 2026-10-01
+published: 2026-05-17
 description: LINUX DO 有人用特定词串测试疑似 Gemini 4 的灰度模型，但不同账号输出并不一致；整理如何区分线索与证据。
 tags: [AI, Gemini, 信息核验, 模型评测]
 category: 随笔

@@ -1,6 +1,6 @@
 ---
 title: 换电脑不重配：开发环境的三种复现方式
-published: 2026-10-01
+published: 2025-08-25
 description: 对比 mise、Dev Containers、Docker 和 Nix 一类工具，按项目需求选择合适的环境复现层级。
 tags: [开发环境, Docker, Dev Containers, Nix, mise]
 category: 开发实践

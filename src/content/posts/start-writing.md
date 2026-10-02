@@ -1,6 +1,6 @@
 ---
 title: 为什么我开始写这个博客
-published: 2026-09-01
+published: 2026-02-19
 description: 写下学习过程中的问题与思考，让每一次实践都留下可以回看的痕迹。
 tags: [随笔, 学习, 博客]
 category: 随笔

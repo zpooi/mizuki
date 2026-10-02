@@ -1,6 +1,6 @@
 ---
 title: 翻译扫描版 PDF，难点不只是识别文字
-published: 2026-10-01
+published: 2026-04-17
 description: 从 RetainPDF 的项目展示整理扫描件、公式和版式保留的检查清单，并讨论 PDF 翻译结果怎么验收。
 tags: [PDF, OCR, 翻译, 科研工具]
 category: 工具分享

@@ -1,6 +1,6 @@
 ---
 title: Windows 终端不只是换皮：开发工作台的几个体验方向
-published: 2026-10-01
+published: 2025-09-13
 description: 从 LINUX DO 的 Windows 终端项目讨论出发，看看分屏、持久会话、补全与 AI CLI 如何减少开发中的上下文切换。
 tags: [Windows, 终端, 开源, 开发工具]
 category: 工具分享

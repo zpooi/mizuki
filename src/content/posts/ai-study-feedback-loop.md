@@ -1,6 +1,6 @@
 ---
 title: 让 AI 当陪练，不做代答机：一个更有效的自学闭环
-published: 2026-10-01
+published: 2025-07-03
 description: 从 LINUX DO 的 AI 自学讨论整理出一套先尝试、再提示、再复述和变式练习的学习流程。
 tags: [AI, 学习方法, 自学, 提示词]
 category: 学习记录

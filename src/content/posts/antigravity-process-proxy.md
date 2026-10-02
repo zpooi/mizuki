@@ -1,6 +1,6 @@
 ---
 title: 给单个应用走代理：Antigravity 的进程级配置思路
-published: 2026-10-01
+published: 2026-06-26
 description: 当编辑器不遵循系统代理时，可以用进程级代理只转发指定程序的流量；这里整理 ProxyBridge 讨论中的配置与排查步骤。
 tags: [代理, Windows, 开发工具, Antigravity]
 category: 开发实践

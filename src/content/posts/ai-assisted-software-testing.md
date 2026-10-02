@@ -1,6 +1,6 @@
 ---
 title: 把 AI 放进测试流程：先生成候选，再由人确认
-published: 2026-10-01
+published: 2026-04-10
 description: 将需求转成测试点、在隔离环境执行并核对证据，比让 Agent 直接“测一下”更容易落地。
 tags: [软件测试, AI, Agent, 测试用例]
 category: 开发实践

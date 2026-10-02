@@ -1,6 +1,6 @@
 ---
 title: 排查 “Stream ended without receiving any events”：先定位请求在哪一层断了
-published: 2026-10-01
+published: 2026-05-12
 description: 从客户端、代理路由、API 网关和 SSE 响应逐层定位流式 API 错误；社区讨论没有确认单一根因。
 tags: [API, SSE, Claude Code, 故障排查]
 category: 开发实践

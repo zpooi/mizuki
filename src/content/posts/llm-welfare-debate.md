@@ -1,6 +1,6 @@
 ---
 title: 模型会受苦吗？把 AI 福利争论拆成两个问题
-published: 2026-10-01
+published: 2025-10-14
 description: LINUX DO 对“赛博监狱”项目的讨论混合了模型意识与内容传播两类担忧，分开讨论更容易看清争议。
 tags: [AI, 伦理, 模型评测, 内容治理]
 category: 随笔
