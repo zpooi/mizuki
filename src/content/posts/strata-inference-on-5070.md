@@ -23,4 +23,3 @@ LINUX DO 用户转发了一组 Strata 推理引擎的测试：在 RTX 5070 12GB 
 因此，别只比较一张“最高速度”截图。固定同一提示词和上下文长度，分别记录 prefill、decode、峰值内存和输出质量；模型版本、量化格式、驱动和推理框架也要一起记下。原帖成绩是特定机器与版本的自测，不等于所有 RTX 5070 都能复现。
 
 参考：[LINUX DO：5070 45tps 本地跑 180B Qwen](https://linux.do/t/2954929)｜[Strata 推理引擎](https://github.com/Niko1221/Strata)
-

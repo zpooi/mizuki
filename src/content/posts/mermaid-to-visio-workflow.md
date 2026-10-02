@@ -23,4 +23,3 @@ draft: false
 工具能省去大量初始绘图动作，但复杂布局不一定和手工设计完全一致。帖子回复也提到，显示绘图窗口有助于看出转换卡在哪一步；因此第一次使用时先选小图验证，再处理完整架构图。
 
 参考：[LINUX DO：md2visio-gui，Mermaid 转 Visio 工具](https://linux.do/t/743889)｜[项目仓库](https://github.com/konbakuyomu/md2visio-gui)
-

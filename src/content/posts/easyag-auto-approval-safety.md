@@ -24,4 +24,3 @@ EasyAG 的更新帖介绍了官方 Turbo Mode 与危险命令规则，作者明�
 帖子里提到的自动审批行为属于作者对特定版本的描述；使用前应核对项目源码与官方文档，不要仅凭宣传文字给主力账号或生产目录授予全自动权限。
 
 参考：[LINUX DO：EasyAG Antigravity 增强启动器更新](https://linux.do/t/2918980)｜[EasyAntigravity 项目](https://github.com/DSDS-CMHL/EasyAntigravity)
-

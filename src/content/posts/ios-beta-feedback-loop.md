@@ -20,4 +20,3 @@ LINUX DO 官方 iOS App 的内测公告说明，项目先用 TestFlight 小范�
 内测资格、系统要求和发放方式会随项目调整，以项目方当前公告为准。参与者也应通过官方 TestFlight 邀请，不要安装来源不明的描述文件或伪造登录页面。
 
 参考：[LINUX DO：社区官方 iOS App 开启内测](https://linux.do/t/2971333)
-

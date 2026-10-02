@@ -25,4 +25,3 @@ draft: false
 多 Agent 协作适合可以并行、边界清晰的任务，例如独立模块或不同测试集。需要共享大量上下文、频繁修改同一处逻辑的工作，拆得太碎反而会增加协调成本。先比较独立工作树和手动 Review 是否已经足够，再决定是否加编排工具。
 
 参考：[LINUX DO：Codeg 无限画布与多智能体协作工作台](https://linux.do/t/2852703)｜[Codeg 项目](https://github.com/xintaofei/codeg)
-

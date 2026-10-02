@@ -23,4 +23,3 @@ draft: false
 文字和背景拆开后，后续改稿不必重做整页；代价是需要检查 AI 识别出来的文案与布局，复杂图表仍可能要人工重画。帖子作者也提示，模型的还原能力会影响最终视觉相似度。
 
 参考：[LINUX DO：ppt-craft-editable，可编辑 PPT 生成方式](https://linux.do/t/2510134)｜[项目仓库](https://github.com/ilioner/ppt-craft-editable)
-

@@ -23,4 +23,3 @@ LINUX DO 上有人分享了一款 Windows 输入法，把一整句拼音交给 L
 涉及私密内容时，先看输入法的模型调用和数据留存方式；不要把密码、医疗记录或公司机密直接发给不明服务。长句转换也要逐句校对，尤其是数字、否定词和变量名。
 
 参考：[LINUX DO：整句拼音交给 LLM 转中文的 Windows 输入法](https://linux.do/t/2943319)｜[项目源码](https://github.com/zerosignal0101/ds-pinyin-ime)
-

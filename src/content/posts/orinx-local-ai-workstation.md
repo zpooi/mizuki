@@ -20,4 +20,3 @@ LINUX DO 的一个开源项目把 Orin X 智驾域控制器改造成离线 AI �
 帖子介绍的是一个特定开发者的方案和支持板卡范围；采购或部署前应先看项目 README、确认设备来源，并让作者确认硬件版本。
 
 参考：[LINUX DO：OrinX 智驾域控制器作为离线 AI 工作站](https://linux.do/t/2974933)｜[项目仓库](https://github.com/marswjf/drive-orin-ai-station)
-
