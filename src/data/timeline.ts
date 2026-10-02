@@ -2,6 +2,51 @@ import type { TimelineItem } from "../components/features/timeline/types";
 
 export const timelineData: TimelineItem[] = [
 	{
+		id: "parkguard-project",
+		title: "ParkGuard 车辆挪车联系平台",
+		description:
+			"从实际停车联系场景出发，搭建包含微信小程序、Go API、通知 Worker 和管理台的服务，练习多端协作、消息通知与容器化部署。",
+		type: "project",
+		startDate: "2026-09-15",
+		location: "个人项目",
+		organization: "GitHub",
+		skills: ["Go", "微信小程序", "PostgreSQL", "Redis", "Svelte"],
+		achievements: ["实现小程序端挪车联系流程", "拆分 API 与通知 Worker", "提供管理台和容器化运行配置"],
+		links: [{ name: "GitHub", url: "https://github.com/zpooi/ParkGuard", type: "project" }],
+		icon: "material-symbols:local-parking",
+		color: "#0EA5E9",
+	},
+	{
+		id: "proxyforge-project",
+		title: "ProxyForge 代理网关",
+		description:
+			"使用 Go 构建代理网关，将管理页面、代理转发与出口选择整合到一个服务中，持续实践网络连接、隧道和服务运维。",
+		type: "project",
+		startDate: "2026-07-07",
+		location: "个人项目",
+		organization: "GitHub",
+		skills: ["Go", "代理转发", "网络隧道", "服务运维"],
+		achievements: ["整合代理转发与管理功能", "实践 WARP MASQUE 出口选择"],
+		links: [{ name: "GitHub", url: "https://github.com/zpooi/ProxyForge", type: "project" }],
+		icon: "material-symbols:conversion-path",
+		color: "#8B5CF6",
+	},
+	{
+		id: "ql-scripts-project",
+		title: "青龙自动化脚本",
+		description:
+			"围绕定时任务编写 Python 脚本，处理开奖数据抓取、历史结果核对与通知，作为数据处理和自动化流程的练习项目。",
+		type: "project",
+		startDate: "2026-06-20",
+		location: "个人项目",
+		organization: "GitHub",
+		skills: ["Python", "自动化", "数据处理", "定时任务"],
+		achievements: ["实现数据获取与历史结果核对", "加入任务通知流程"],
+		links: [{ name: "GitHub", url: "https://github.com/zpooi/ql_scripts", type: "project" }],
+		icon: "material-symbols:terminal",
+		color: "#10B981",
+	},
+	{
 		id: "software-engineering-undergraduate",
 		title: "软件工程本科在读",
 		description:
@@ -66,7 +111,7 @@ export const timelineData: TimelineItem[] = [
 		startDate: "2022-09-01",
 		endDate: "2025-06-30",
 		location: "重庆",
-		organization: "重庆城市科技学院",
+		organization: "重庆城市管理职业大学",
 		skills: ["Java", "C", "MySQL", "HTML/CSS/JS", "计算机网络"],
 		achievements: ["软件技术专业专科", "GPA 3.5"],
 		icon: "material-symbols:school",
