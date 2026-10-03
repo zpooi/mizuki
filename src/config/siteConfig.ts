@@ -109,18 +109,16 @@ export const siteConfig: SiteConfig = {
 		// 支持单张图片或图片数组；数组有多张时自动轮播
 		src: {
 			desktop: [
-				"/assets/desktop-banner/inori.webp",
-				"/assets/desktop-banner/anime-window.webp",
-				"/assets/desktop-banner/girl-glance.webp",
-				"/assets/desktop-banner/elaina-graffiti.webp",
-				"/assets/desktop-banner/elaina-window.webp",
+				"/assets/desktop-banner/spacetime-door.webp",
+				"/assets/desktop-banner/sunset-reflection.webp",
+				"/assets/desktop-banner/dark-clouds.webp",
+				"/assets/desktop-banner/open-landscape.webp",
 			],
 			mobile: [
-				"/assets/desktop-banner/inori.webp",
-				"/assets/desktop-banner/anime-window.webp",
-				"/assets/desktop-banner/girl-glance.webp",
-				"/assets/desktop-banner/elaina-graffiti.webp",
-				"/assets/desktop-banner/elaina-window.webp",
+				"/assets/desktop-banner/spacetime-door.webp",
+				"/assets/desktop-banner/sunset-reflection.webp",
+				"/assets/desktop-banner/dark-clouds.webp",
+				"/assets/desktop-banner/open-landscape.webp",
 			],
 		}, // 使用本地横幅图片
 
