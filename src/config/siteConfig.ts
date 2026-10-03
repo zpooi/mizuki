@@ -106,11 +106,23 @@ export const siteConfig: SiteConfig = {
 	},
 
 	banner: {
-		// 支持图片或视频；配置多个图片时自动启用轮播，保留原图路径方便切回
+		// 支持单张图片或图片数组；数组有多张时自动轮播
 		src: {
-			desktop: ["/assets/desktop-banner/anime-girl-banner.mp4"],
-			mobile: ["/assets/desktop-banner/anime-girl-banner.mp4"],
-		}, // 使用本地横幅媒体
+			desktop: [
+				"/assets/desktop-banner/inori.webp",
+				"/assets/desktop-banner/anime-window.webp",
+				"/assets/desktop-banner/girl-glance.webp",
+				"/assets/desktop-banner/elaina-graffiti.webp",
+				"/assets/desktop-banner/elaina-window.webp",
+			],
+			mobile: [
+				"/assets/desktop-banner/inori.webp",
+				"/assets/desktop-banner/anime-window.webp",
+				"/assets/desktop-banner/girl-glance.webp",
+				"/assets/desktop-banner/elaina-graffiti.webp",
+				"/assets/desktop-banner/elaina-window.webp",
+			],
+		}, // 使用本地横幅图片
 
 		position: "center", // 等同于 object-position，仅支持 'top', 'center', 'bottom'。默认为 'center'
 

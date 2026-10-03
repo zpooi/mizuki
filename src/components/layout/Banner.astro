@@ -1,16 +1,16 @@
 ---
 /**
  * Banner 组件
- * 支持图片/视频横幅与轮播图模式，包含文字覆盖层和水波纹效果
+ * 支持单图与图片轮播模式，包含文字覆盖层和水波纹效果
  * 轮播模式使用 Crossfade 动画
  */
 
+import Image from "@components/atoms/Image/Image.astro";
 import TypewriterText from "@components/atoms/typewriter-text/TypewriterText.astro";
 import { Icon } from "astro-icon/components";
 import { siteConfig } from "../../config";
 import { BANNER_HEIGHT_EXTEND } from "../../constants/constants";
 import { getImageFormats, getImageQuality } from "../../utils/image-utils";
-import BannerMedia from "./BannerMedia.astro";
 
 interface Props {
 	// Banner 配置
@@ -49,13 +49,9 @@ const normalizeToArray = (media: string | string[]): string[] =>
 const desktopImages = normalizeToArray(bannerImages.desktop).filter(Boolean);
 const mobileImages = normalizeToArray(bannerImages.mobile).filter(Boolean);
 
-const hasVideoBanner = [...desktopImages, ...mobileImages].some((src) =>
-	/\.(mp4|webm|ogg)(?:[?#].*)?$/i.test(src),
-);
 const isCarouselEnabled =
-	hasVideoBanner ||
-	(siteConfig.banner.carousel?.enable &&
-		(desktopImages.length > 1 || mobileImages.length > 1));
+	siteConfig.banner.carousel?.enable &&
+	(desktopImages.length > 1 || mobileImages.length > 1);
 
 // 轮播间隔最小 1.5 秒，防止 setInterval 卡顿
 const carouselIntervalMs = Math.max(
@@ -98,8 +94,9 @@ const bannerFormats = getImageFormats();
 		{/* 移动端：首个媒体项直接渲染，其余放入 template 延迟加载 */}
 			{mobileImages.length > 0 && (
 				<div class="banner-image-slot-mobile absolute inset-0 block md:hidden">
-					<BannerMedia
-						alt="Mobile banner media 1"
+					<Image
+						alt="Mobile banner image 1"
+						class="object-cover h-full w-full"
 						src={mobileImages[0]}
 						position={siteConfig.banner.position}
 						widths={[640, 1024, 1536]}
@@ -113,8 +110,9 @@ const bannerFormats = getImageFormats();
 			)}
 			{mobileImages.slice(1).map((src, i) => (
 				<template class="banner-tpl-mobile">
-					<BannerMedia
-						alt={`Mobile banner media ${i + 2}`}
+					<Image
+						alt={`Mobile banner image ${i + 2}`}
+						class="object-cover h-full w-full"
 						src={src}
 						position={siteConfig.banner.position}
 						widths={[640, 1024, 1536]}
@@ -130,9 +128,10 @@ const bannerFormats = getImageFormats();
 			{/* 桌面端：首个媒体项直接渲染，其余放入 template 延迟加载 */}
 			{desktopImages.length > 0 && (
 				<div class="banner-image-slot-desktop absolute inset-0 hidden md:block">
-					<BannerMedia
+					<Image
 						id="banner"
-						alt="Desktop banner media 1"
+						alt="Desktop banner image 1"
+						class="object-cover h-full w-full"
 						src={desktopImages[0]}
 						position={siteConfig.banner.position}
 						widths={[1024, 1536, 2048, 2560]}
@@ -146,8 +145,9 @@ const bannerFormats = getImageFormats();
 			)}
 			{desktopImages.slice(1).map((src, i) => (
 				<template class="banner-tpl-desktop">
-					<BannerMedia
-						alt={`Desktop banner media ${i + 2}`}
+					<Image
+						alt={`Desktop banner image ${i + 2}`}
+						class="object-cover h-full w-full"
 						src={src}
 						position={siteConfig.banner.position}
 						widths={[1024, 1536, 2048, 2560]}
@@ -254,43 +254,12 @@ const bannerFormats = getImageFormats();
 				var interval = parseInt(container.dataset.carouselInterval || '6000', 10);
 				var FADE_MS = parseInt(container.dataset.fadeMs || '1500', 10);
 
+				if (mobileCount <= 1 && desktopCount <= 1) return;
+
 				// 清理上一次 Swup 导航遗留的监听器和定时器
 				if (window.__bannerCarouselCleanup) {
 					window.__bannerCarouselCleanup();
 					window.__bannerCarouselCleanup = null;
-				}
-
-				// 只播放当前断点可见的横幅视频，避免桌面/移动端重复解码和下载。
-				function syncVideoPlayback() {
-					var isMobileViewport = window.matchMedia('(max-width: 767px)').matches;
-					var videos = container.querySelectorAll('video');
-					for (var i = 0; i < videos.length; i++) {
-						var isMobileVideo = !!videos[i].closest('.banner-image-slot-mobile');
-						var shouldPlay = isMobileViewport === isMobileVideo && !document.hidden;
-						if (shouldPlay) {
-							var playPromise = videos[i].play();
-							if (playPromise && typeof playPromise.catch === 'function') {
-								playPromise.catch(function() {});
-							}
-						} else {
-							videos[i].pause();
-						}
-					}
-				}
-
-				window.addEventListener('resize', syncVideoPlayback);
-				syncVideoPlayback();
-
-				if (mobileCount <= 1 && desktopCount <= 1) {
-					document.addEventListener('visibilitychange', syncVideoPlayback);
-					window.__bannerCarouselCleanup = function() {
-						window.removeEventListener('resize', syncVideoPlayback);
-						document.removeEventListener('visibilitychange', syncVideoPlayback);
-						container.querySelectorAll('video').forEach(function(video) {
-							video.pause();
-						});
-					};
-					return;
 				}
 
 				// 保存初始帧 HTML，供帧收集使用
@@ -434,7 +403,6 @@ const bannerFormats = getImageFormats();
 					newSlot.style.transition = 'opacity ' + FADE_MS + 'ms ease-in-out';
 					newSlot.innerHTML = frames[targetIndex];
 					oldSlot.parentNode.insertBefore(newSlot, oldSlot.nextSibling);
-					syncVideoPlayback();
 
 					// 双 rAF：确保 opacity:0 已绘制，然后同时触发淡入 + Ken Burns
 					requestAnimationFrame(function() {
@@ -506,7 +474,6 @@ const bannerFormats = getImageFormats();
 
 				// 页面可见性：后台标签页暂停轮播
 				var visibilityHandler = function() {
-					syncVideoPlayback();
 					if (document.hidden) {
 						stopCarousel();
 						pauseKenBurns();
@@ -626,7 +593,6 @@ const bannerFormats = getImageFormats();
 				// 注册清理函数，供下次 Swup 导航或销毁时调用
 				window.__bannerCarouselCleanup = function() {
 					stopCarousel();
-					window.removeEventListener('resize', syncVideoPlayback);
 					remainingTime = 0;
 					intervalStartTime = 0;
 					document.removeEventListener('visibilitychange', visibilityHandler);
