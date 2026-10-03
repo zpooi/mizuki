@@ -94,6 +94,9 @@ if (!banner || typeof banner !== "string" || banner.trim() === "") {
 
 // TODO don't use post cover as banner for now
 banner = getDefaultBanner();
+const ogBanner = /\.(mp4|webm|ogg)(?:[?#].*)?$/i.test(banner)
+	? "/assets/desktop-banner/1.jpg"
+	: banner;
 
 const enableBanner = !!siteConfig.banner.src;
 
@@ -114,11 +117,11 @@ if (siteConfig.generateOgImages && postSlug) {
 	ogImageUrl = coverImage.startsWith("http")
 		? coverImage
 		: new URL(coverImage, Astro.site).toString();
-} else if (banner) {
-	// For others, use the first banner as OG image
-	ogImageUrl = banner.startsWith("http")
-		? banner
-		: new URL(banner, Astro.site).toString();
+} else if (ogBanner) {
+	// Social cards require an image; use a retained static banner when the page banner is video.
+	ogImageUrl = ogBanner.startsWith("http")
+		? ogBanner
+		: new URL(ogBanner, Astro.site).toString();
 }
 
 // const siteLang = siteConfig.lang.replace('_', '-')

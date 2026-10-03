@@ -1,16 +1,16 @@
 ---
 /**
  * Banner 组件
- * 支持单图模式和轮播图模式，包含文字覆盖层和水波纹效果
- * 轮播模式使用 Ken Burns + Crossfade 动画（参考 Firefly 实现）
+ * 支持图片/视频横幅与轮播图模式，包含文字覆盖层和水波纹效果
+ * 轮播模式使用 Crossfade 动画
  */
 
-import Image from "@components/atoms/Image/Image.astro";
 import TypewriterText from "@components/atoms/typewriter-text/TypewriterText.astro";
 import { Icon } from "astro-icon/components";
 import { siteConfig } from "../../config";
 import { BANNER_HEIGHT_EXTEND } from "../../constants/constants";
 import { getImageFormats, getImageQuality } from "../../utils/image-utils";
+import BannerMedia from "./BannerMedia.astro";
 
 interface Props {
 	// Banner 配置
@@ -42,16 +42,20 @@ const {
 	showWave = siteConfig.banner.waves?.enable ?? true,
 } = Astro.props;
 
-// 标准化图片数组
-const normalizeToArray = (images: string | string[]): string[] =>
-	Array.isArray(images) ? images : [images];
+// 标准化横幅媒体数组。保留图片数组配置，后续可以直接切回静态图轮播。
+const normalizeToArray = (media: string | string[]): string[] =>
+	Array.isArray(media) ? media : [media];
 
 const desktopImages = normalizeToArray(bannerImages.desktop).filter(Boolean);
 const mobileImages = normalizeToArray(bannerImages.mobile).filter(Boolean);
 
+const hasVideoBanner = [...desktopImages, ...mobileImages].some((src) =>
+	/\.(mp4|webm|ogg)(?:[?#].*)?$/i.test(src),
+);
 const isCarouselEnabled =
-	siteConfig.banner.carousel?.enable &&
-	(desktopImages.length > 1 || mobileImages.length > 1);
+	hasVideoBanner ||
+	(siteConfig.banner.carousel?.enable &&
+		(desktopImages.length > 1 || mobileImages.length > 1));
 
 // 轮播间隔最小 1.5 秒，防止 setInterval 卡顿
 const carouselIntervalMs = Math.max(
@@ -65,7 +69,7 @@ const fadeMs = Math.min(
 	1500,
 );
 
-// Ken Burns 动画时长 = 间隔 + 淡入，确保旧图在 crossfade 期间仍在运动，消除停顿感
+// 横幅媒体交叉淡入时长与轮播周期同步
 const kbDurationMs = carouselIntervalMs + fadeMs;
 
 const hasBannerCredit = siteConfig.banner.credit.enable;
@@ -82,7 +86,7 @@ const bannerFormats = getImageFormats();
 	style={`top: -${BANNER_HEIGHT_EXTEND}vh`}
 >
 	{isCarouselEnabled ? (
-		/* 轮播图模式：Ken Burns + Crossfade */
+		/* 轮播图模式：Crossfade */
 		<div
 			id="banner-carousel"
 			class="relative h-full w-full"
@@ -91,12 +95,11 @@ const bannerFormats = getImageFormats();
 			data-carousel-interval={carouselIntervalMs}
 			data-fade-ms={fadeMs}
 		>
-			{/* 移动端：第一张图直接渲染，其余放入 template 延迟加载 */}
+		{/* 移动端：首个媒体项直接渲染，其余放入 template 延迟加载 */}
 			{mobileImages.length > 0 && (
 				<div class="banner-image-slot-mobile absolute inset-0 block md:hidden">
-					<Image
-						alt="Mobile banner image 1"
-						class="object-cover h-full w-full"
+					<BannerMedia
+						alt="Mobile banner media 1"
 						src={mobileImages[0]}
 						position={siteConfig.banner.position}
 						widths={[640, 1024, 1536]}
@@ -110,9 +113,8 @@ const bannerFormats = getImageFormats();
 			)}
 			{mobileImages.slice(1).map((src, i) => (
 				<template class="banner-tpl-mobile">
-					<Image
-						alt={`Mobile banner image ${i + 2}`}
-						class="object-cover h-full w-full"
+					<BannerMedia
+						alt={`Mobile banner media ${i + 2}`}
 						src={src}
 						position={siteConfig.banner.position}
 						widths={[640, 1024, 1536]}
@@ -125,13 +127,12 @@ const bannerFormats = getImageFormats();
 				</template>
 			))}
 
-			{/* 桌面端：第一张图直接渲染，其余放入 template 延迟加载 */}
+			{/* 桌面端：首个媒体项直接渲染，其余放入 template 延迟加载 */}
 			{desktopImages.length > 0 && (
 				<div class="banner-image-slot-desktop absolute inset-0 hidden md:block">
-					<Image
+					<BannerMedia
 						id="banner"
-						alt="Desktop banner image 1"
-						class="object-cover h-full w-full"
+						alt="Desktop banner media 1"
 						src={desktopImages[0]}
 						position={siteConfig.banner.position}
 						widths={[1024, 1536, 2048, 2560]}
@@ -145,9 +146,8 @@ const bannerFormats = getImageFormats();
 			)}
 			{desktopImages.slice(1).map((src, i) => (
 				<template class="banner-tpl-desktop">
-					<Image
-						alt={`Desktop banner image ${i + 2}`}
-						class="object-cover h-full w-full"
+					<BannerMedia
+						alt={`Desktop banner media ${i + 2}`}
 						src={src}
 						position={siteConfig.banner.position}
 						widths={[1024, 1536, 2048, 2560]}
@@ -229,12 +229,12 @@ const bannerFormats = getImageFormats();
 		</div>
 	)}
 
-	<!-- Ken Burns 动画样式（放在 body 中，不受 Swup head 替换影响） -->
+	<!-- 轮播交叉淡入样式（放在 body 中，不受 Swup head 替换影响） -->
 	{isCarouselEnabled && (
 		<Fragment set:html={`<style>
 			@keyframes bannerKenBurns {
-				0% { transform: scale(1.03); }
-				100% { transform: scale(1.13); }
+				0% { transform: scale(1); }
+				100% { transform: scale(1); }
 			}
 			.banner-kb {
 				animation: bannerKenBurns ${kbDurationMs}ms ease-out forwards;
@@ -242,7 +242,7 @@ const bannerFormats = getImageFormats();
 		</style>`} />
 	)}
 
-	<!-- 轮播脚本：随机起始 + 帧收集 + Ken Burns + Crossfade + 触摸/鼠标事件 -->
+	<!-- 轮播脚本：随机起始 + 帧收集 + Crossfade + 触摸/鼠标事件 -->
 	{isCarouselEnabled && (
 		<script is:inline data-swup-ignore-script>
 			(function initBannerCarousel() {
@@ -254,12 +254,43 @@ const bannerFormats = getImageFormats();
 				var interval = parseInt(container.dataset.carouselInterval || '6000', 10);
 				var FADE_MS = parseInt(container.dataset.fadeMs || '1500', 10);
 
-				if (mobileCount <= 1 && desktopCount <= 1) return;
-
 				// 清理上一次 Swup 导航遗留的监听器和定时器
 				if (window.__bannerCarouselCleanup) {
 					window.__bannerCarouselCleanup();
 					window.__bannerCarouselCleanup = null;
+				}
+
+				// 只播放当前断点可见的横幅视频，避免桌面/移动端重复解码和下载。
+				function syncVideoPlayback() {
+					var isMobileViewport = window.matchMedia('(max-width: 767px)').matches;
+					var videos = container.querySelectorAll('video');
+					for (var i = 0; i < videos.length; i++) {
+						var isMobileVideo = !!videos[i].closest('.banner-image-slot-mobile');
+						var shouldPlay = isMobileViewport === isMobileVideo && !document.hidden;
+						if (shouldPlay) {
+							var playPromise = videos[i].play();
+							if (playPromise && typeof playPromise.catch === 'function') {
+								playPromise.catch(function() {});
+							}
+						} else {
+							videos[i].pause();
+						}
+					}
+				}
+
+				window.addEventListener('resize', syncVideoPlayback);
+				syncVideoPlayback();
+
+				if (mobileCount <= 1 && desktopCount <= 1) {
+					document.addEventListener('visibilitychange', syncVideoPlayback);
+					window.__bannerCarouselCleanup = function() {
+						window.removeEventListener('resize', syncVideoPlayback);
+						document.removeEventListener('visibilitychange', syncVideoPlayback);
+						container.querySelectorAll('video').forEach(function(video) {
+							video.pause();
+						});
+					};
+					return;
 				}
 
 				// 保存初始帧 HTML，供帧收集使用
@@ -403,6 +434,7 @@ const bannerFormats = getImageFormats();
 					newSlot.style.transition = 'opacity ' + FADE_MS + 'ms ease-in-out';
 					newSlot.innerHTML = frames[targetIndex];
 					oldSlot.parentNode.insertBefore(newSlot, oldSlot.nextSibling);
+					syncVideoPlayback();
 
 					// 双 rAF：确保 opacity:0 已绘制，然后同时触发淡入 + Ken Burns
 					requestAnimationFrame(function() {
@@ -474,6 +506,7 @@ const bannerFormats = getImageFormats();
 
 				// 页面可见性：后台标签页暂停轮播
 				var visibilityHandler = function() {
+					syncVideoPlayback();
 					if (document.hidden) {
 						stopCarousel();
 						pauseKenBurns();
@@ -593,6 +626,7 @@ const bannerFormats = getImageFormats();
 				// 注册清理函数，供下次 Swup 导航或销毁时调用
 				window.__bannerCarouselCleanup = function() {
 					stopCarousel();
+					window.removeEventListener('resize', syncVideoPlayback);
 					remainingTime = 0;
 					intervalStartTime = 0;
 					document.removeEventListener('visibilitychange', visibilityHandler);
